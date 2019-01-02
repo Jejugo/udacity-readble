@@ -1,0 +1,31 @@
+$backgroundColor: #FFD87D;
+$buttonColor: #FFBF7D;
+$fontColor: #707070;
+
+//fonts
+li, button {
+  font-family: 'Just Another Hand', cursive;
+}
+
+// General
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  text-align: center;
+  background-color: $backgroundColor;
+}
+
+.pageSecton{
+  margin: 5% 0;
+  width: 82%;
+  float: right;
+}
+
+p{
+  margin:  2%;
+}

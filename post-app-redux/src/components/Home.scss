@@ -1,0 +1,29 @@
+.navBar{
+  width: 18%;
+  height: 100vh;
+  position: fixed;
+}
+
+.navBar{
+  ul{
+    list-style-type: none;  
+  }
+}
+
+.titleNav{
+  font-size: 5vw;
+  margin: 20% 0;
+}
+
+.listItem{
+  font-size: 3vw;
+  border: 2px solid rgb(5, 5, 5);
+  width: 85%;
+  background-color: $buttonColor;
+  margin: 2% 0;
+  padding: 3%;
+
+  &:hover{
+    color: #FFF6EC;
+  }
+}

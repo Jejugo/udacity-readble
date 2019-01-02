@@ -1,0 +1,29 @@
+.postArea{
+  width: 50%;
+  border: 1px solid black;
+  margin: 2% auto;
+  padding: 2% 0;
+  border-radius: 10px;
+  background-color: #FFF6EC;
+}
+
+.iconTop{
+  float: right;
+  margin-right: 1%;
+}
+
+.iconBottom{
+  float: left;
+  margin-left: 1%;
+}
+
+.commentsIndicator{
+  float: right;
+  margin-right: 1%;
+}
+
+p.after{
+  content: "";
+  clear: both;
+  display: table;
+}

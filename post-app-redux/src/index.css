@@ -1,0 +1,69 @@
+li, button {
+  font-family: 'Just Another Hand', cursive; }
+
+html,
+body,
+#root {
+  height: 100%; }
+
+body {
+  margin: 0;
+  text-align: center;
+  background-color: #FFD87D; }
+
+.pageSecton {
+  margin: 5% 0;
+  width: 82%;
+  float: right; }
+
+p {
+  margin: 2%; }
+
+.navBar {
+  width: 18%;
+  height: 100vh;
+  position: fixed; }
+
+.navBar ul {
+  list-style-type: none; }
+
+.titleNav {
+  font-size: 5vw;
+  margin: 20% 0; }
+
+.listItem {
+  font-size: 3vw;
+  border: 2px solid #050505;
+  width: 85%;
+  background-color: #FFBF7D;
+  margin: 2% 0;
+  padding: 3%; }
+  .listItem:hover {
+    color: #FFF6EC; }
+
+.postArea {
+  width: 50%;
+  border: 1px solid black;
+  margin: 2% auto;
+  padding: 2% 0;
+  border-radius: 10px;
+  background-color: #FFF6EC; }
+
+.iconTop {
+  float: right;
+  margin-right: 1%; }
+
+.iconBottom {
+  float: left;
+  margin-left: 1%; }
+
+.commentsIndicator {
+  float: right;
+  margin-right: 1%; }
+
+p.after {
+  content: "";
+  clear: both;
+  display: table; }
+
+/*# sourceMappingURL=index.css.map */
