@@ -39,6 +39,19 @@ p {
       width: 50%;
       font-size: 35px; }
 
+@media screen and (max-width: 768px) {
+  .mainPage {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; }
+    .mainPage .pageSecton {
+      flex: 1 0 100%; }
+    .mainPage .addBtn {
+      flex: 1 0 30%; }
+      .mainPage .addBtn button {
+        padding: 3%;
+        width: 50%;
+        font-size: 35px; } }
 .postArea {
   width: 80%;
   border: 1px solid black;
@@ -66,19 +79,28 @@ p {
   clear: both;
   display: table; }
 
+@media screen and (max-width: 768px) {
+  .postArea {
+    width: 90%;
+    border: 1px solid black;
+    margin: 2% auto;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC; } }
 .navBar {
   width: 20%;
   height: 100vh;
   position: fixed; }
   .navBar ul {
-    list-style-type: none; }
+    list-style-type: none;
+    padding: 0; }
 
 .titleNav {
-  font-size: 5vw;
+  font-size: 60px;
   margin: 20% 0; }
 
 .listItem {
-  font-size: 3vw;
+  font-size: 50px;
   border: 2px solid #050505;
   width: 85%;
   background-color: #FFBF7D;
@@ -87,6 +109,27 @@ p {
   .listItem:hover {
     color: #FFF6EC; }
 
+@media screen and (max-width: 768px) {
+  .navBar {
+    width: 100%;
+    position: relative;
+    height: auto; }
+    .navBar ul {
+      list-style-type: none; }
+
+  .titleNav {
+    font-size: 5vw;
+    margin: 2% 0; }
+
+  .listItem {
+    font-size: 50px;
+    border: 2px solid #050505;
+    width: 85%;
+    background-color: #FFBF7D;
+    margin: 1% 0;
+    padding: 1%; }
+    .listItem:hover {
+      color: #FFF6EC; } }
 .modal {
   position: absolute;
   top: 10%;
@@ -117,5 +160,17 @@ p {
   width: 50%;
   margin: 10%;
   font-size: 35px; }
+
+@media screen and (max-width: 768px) {
+  .modal {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 60%;
+    width: 80%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    opacity: 0.95; } }
 
 /*# sourceMappingURL=index.css.map */

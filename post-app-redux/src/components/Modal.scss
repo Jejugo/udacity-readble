@@ -36,3 +36,17 @@
     font-size: 35px;
   }
 }
+
+@media screen and (max-width: 768px){
+  .modal{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 60%;
+    width: 80%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    opacity: 0.95
+  }
+}

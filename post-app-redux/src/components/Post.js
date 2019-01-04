@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'; 
 import { handleLikeThunk } from '../redux/actions/posts';
 import { handleDeleteThunk } from '../redux/actions/posts';
@@ -43,6 +44,12 @@ export class Post extends Component {
     });
   }
 
+  postPage = (e, id) => {
+    e.preventDefault();
+    const { history } = this.props;
+    history.push(`/post/${id.toString()}`);
+  }
+
   render() {
     const { post } = this.props;
     const { showModal } = this.state;
@@ -50,15 +57,15 @@ export class Post extends Component {
     console.log('render filho', post);
 
     return (
-        <div className="postArea" key={post.id}>
-            <i className="far fa-trash-alt iconTop" onClick={(e,id) => this.handleDelete(e, post.id)}></i><i onClick={(e, id) => this.handleEdit(e, post)} className="fas fa-edit iconTop"></i>
-            <p style={{textAlign: 'left'}}>{post.body}</p>
-            <div className="bottomPost">
-            <i className="far fa-thumbs-up iconBottom" onClick={(e, id) => this.handleLike(e, post.id)} name="upVote"></i><i onClick={(e, id) => this.handleLike(e, post.id)} name="downVote" className="far fa-thumbs-down iconBottom"></i><span>{post.voteScore}</span>
-            <span className="commentsIndicator" > {post.commentCount} Comments </span>
-            </div>
-            <Modal post={post} showModal={showModal} closeModal={this.closeModal}></Modal>
+      <Fragment>
+        <i className="far fa-trash-alt iconTop" onClick={(e,id) => this.handleDelete(e, post.id)}></i><i onClick={(e, id) => this.handleEdit(e, post)} className="fas fa-edit iconTop"></i>
+        <p style={{textAlign: 'left'}} onClick={(e, id) => this.postPage(e, post.id)}>{post.body}</p>
+        <div className="bottomPost">
+        <i className="far fa-thumbs-up iconBottom" onClick={(e, id) => this.handleLike(e, post.id)} name="upVote"></i><i onClick={(e, id) => this.handleLike(e, post.id)} name="downVote" className="far fa-thumbs-down iconBottom"></i><span>{post.voteScore}</span>
+        <span className="commentsIndicator" > {post.commentCount} Comments </span>
         </div>
+        <Modal post={post} showModal={showModal} closeModal={this.closeModal}></Modal>
+      </Fragment>
     )
   }
 }
@@ -71,4 +78,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Post)
+export default withRouter(connect(null, mapDispatchToProps)(Post));

@@ -17,7 +17,7 @@ export default function posts(state = initialState, action){
       ]
     case HANDLE_LIKE:
       let handleLike = state.map(post => (
-        post.id === action.id ? Object.assign(post, {voteScore: action.post.voteScore}) : post
+        post.id === action.id ? action.post : post
       ));
       return handleLike;
 
@@ -27,7 +27,7 @@ export default function posts(state = initialState, action){
         ]
     case UPDATE_POST:
         let updatePost = state.map(post => (
-          post.id === action.post.id ? Object.assign(post, {title: action.post.title, author: action.post.author, category: action.post.category, body: action.post.body}) : post
+          post.id === action.post.id ? action.post : post
         ));
         return updatePost;
 

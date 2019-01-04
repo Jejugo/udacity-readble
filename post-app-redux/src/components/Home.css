@@ -13,4 +13,18 @@
       width: 50%;
       font-size: 35px; }
 
+@media screen and (max-width: 768px) {
+  .mainPage {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; }
+    .mainPage .pageSecton {
+      flex: 1 0 100%; }
+    .mainPage .addBtn {
+      flex: 1 0 30%; }
+      .mainPage .addBtn button {
+        padding: 3%;
+        width: 50%;
+        font-size: 35px; } }
+
 /*# sourceMappingURL=Home.css.map */

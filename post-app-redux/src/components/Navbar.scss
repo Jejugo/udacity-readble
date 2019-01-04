@@ -3,17 +3,18 @@
  height: 100vh;
  position: fixed;
   ul{
-  list-style-type: none;  
+  list-style-type: none; 
+  padding: 0; 
   }
 }
 
 .titleNav{
-font-size: 5vw;
+font-size: 60px;
 margin: 20% 0;
 }
 
 .listItem{
-  font-size: 3vw;
+  font-size: 50px;
   border: 2px solid rgb(5, 5, 5);
   width: 85%;
   background-color: $buttonColor;
@@ -22,5 +23,33 @@ margin: 20% 0;
 
   &:hover{
     color: #FFF6EC;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .navBar{
+    width: 100%;
+    position: relative;
+    height: auto;
+      ul{
+        list-style-type: none;  
+      }
+  }
+  .titleNav{
+    font-size: 5vw;
+    margin: 2% 0;
+    }
+    
+  .listItem{
+    font-size: 50px;
+    border: 2px solid rgb(5, 5, 5);
+    width: 85%;
+    background-color: $buttonColor;
+    margin: 1% 0;
+    padding: 1%;
+  
+    &:hover{
+      color: #FFF6EC;
+    }
   }
 }

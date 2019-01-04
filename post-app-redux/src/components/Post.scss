@@ -38,3 +38,14 @@
     clear: both;
     display: table; 
 }
+
+@media screen and (max-width: 768px){
+  .postArea{
+    width: 90%;
+    border: 1px solid black;
+    margin: 2% auto;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC;
+  }
+}

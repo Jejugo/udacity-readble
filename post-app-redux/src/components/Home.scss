@@ -21,3 +21,25 @@
     }
   }
 }
+
+@media screen and (max-width: 768px){
+  .mainPage{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  
+    .pageSecton{
+      flex: 1 0 100%;
+    }
+  
+    .addBtn{
+      flex: 1 0 30%;
+  
+      button{
+        padding: 3%;
+        width: 50%;
+        font-size: 35px;
+      }
+    }
+  }
+}

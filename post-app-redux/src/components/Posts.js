@@ -48,7 +48,9 @@ class Posts extends Component {
         {
           posts !== undefined && (
             posts.map(post => (
-              <Post key={post.id} post={post}></Post>
+              <div className="postArea" key={post.id}>
+                <Post key={post.id} post={post}></Post>
+              </div>
             ))
           )
         }
@@ -59,7 +61,6 @@ class Posts extends Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('State!', state);
   return {
     postsStore: state.posts
   }
