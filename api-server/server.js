@@ -9,9 +9,9 @@ const posts = require('./posts')
 const comments = require('./comments')
 
 const app = express()
+app.use(cors());
 
-app.use(express.static('public'))
-app.use(cors())
+app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {

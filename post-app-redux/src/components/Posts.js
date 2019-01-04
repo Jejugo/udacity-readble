@@ -2,30 +2,53 @@ import React, { Component } from 'react'
 import Post from './Post';
 import { connect } from 'react-redux';
 import { getPostsByCategory } from '../redux/actions/posts';
+import { getAllPosts } from '../redux/actions/posts';
 
 class Posts extends Component {
 
+  state = {
+    posts: []
+  }
+
 
   componentDidUpdate(prevProps, prevState){
-    const { btnClicked, dispatch, posts } = this.props;
-    console.log('hello1');
+    const { btnClicked, dispatch, postsStore } = this.props;
+
+    console.log('atualizou! ', this.state);
+
+    if(prevProps.postsStore !== postsStore){
+      this.setState({
+        posts: postsStore
+      });
+    }
     
-    if (btnClicked !== '' && prevProps.btnClicked !== btnClicked){
+    if (btnClicked !== '' && (prevProps.btnClicked !== btnClicked)){
       dispatch(getPostsByCategory(btnClicked));
+      this.setState({
+        posts: postsStore
+      });
     }
 
   }
 
+  componentDidMount(){
+    const { dispatch, postsStore } = this.props
+  
+    dispatch(getAllPosts());
+
+  }
+
   render() {
-    const { posts, btnClicked } = this.props;
-    console.log('the btn that was clicked was: ', btnClicked);
+    const { posts } = this.state;
+
+    console.log('render pai');
 
     return (
       <div>
         {
           posts !== undefined && (
             posts.map(post => (
-              <Post post={post}></Post>
+              <Post key={post.id} post={post}></Post>
             ))
           )
         }
@@ -36,8 +59,9 @@ class Posts extends Component {
 
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('State!', state);
   return {
-    posts: state.posts
+    postsStore: state.posts
   }
 }
 

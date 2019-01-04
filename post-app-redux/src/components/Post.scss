@@ -1,5 +1,5 @@
 .postArea{
-  width: 50%;
+  width: 80%;
   border: 1px solid black;
   margin: 2% auto;
   padding: 2% 0;
@@ -7,23 +7,34 @@
   background-color: #FFF6EC;
 }
 
+.bottomPost{
+  display: flex;
+  //border: 1px #ccc solid;
+  flex-wrap: wrap;
+
+
+  .iconBottom{
+    flex: 1 1 0%;
+    justify-content: flex-start;
+    //border: 1px #ccc solid;
+  }
+
+  .commentsIndicator{
+    flex: 10 10 10%;
+    justify-content: flex-end;
+    //border: 1px #ccc solid;
+  }
+  
+}
+
 .iconTop{
   float: right;
   margin-right: 1%;
 }
 
-.iconBottom{
-  float: left;
-  margin-left: 1%;
-}
 
-.commentsIndicator{
-  float: right;
-  margin-right: 1%;
-}
-
-p.after{
-  content: "";
-  clear: both;
-  display: table;
+.iconTop:after{
+    content: "";
+    clear: both;
+    display: table; 
 }

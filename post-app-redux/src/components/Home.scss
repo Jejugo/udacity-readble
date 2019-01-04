@@ -1,29 +1,23 @@
-.navBar{
-  width: 18%;
-  height: 100vh;
-  position: fixed;
-}
 
-.navBar{
-  ul{
-    list-style-type: none;  
+.mainPage{
+  display: flex;
+  width: 78%;
+  float: right;
+
+  .pageSecton{
+    flex: 1 0 70%;
+    
   }
-}
 
-.titleNav{
-  font-size: 5vw;
-  margin: 20% 0;
-}
+  .addBtn{
+    flex: 1 0 30%;
 
-.listItem{
-  font-size: 3vw;
-  border: 2px solid rgb(5, 5, 5);
-  width: 85%;
-  background-color: $buttonColor;
-  margin: 2% 0;
-  padding: 3%;
-
-  &:hover{
-    color: #FFF6EC;
+    button{
+      position: relative;
+      top: 23%;
+      padding: 3%;
+      width: 50%;
+      font-size: 35px;
+    }
   }
 }

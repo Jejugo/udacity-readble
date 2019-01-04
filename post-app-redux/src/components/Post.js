@@ -1,17 +1,74 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'; 
+import { handleLikeThunk } from '../redux/actions/posts';
+import { handleDeleteThunk } from '../redux/actions/posts';
+import Modal from './Modal';
 
 export class Post extends Component {
+
+  state = {
+    showModal: false,
+    post: {}
+  }
+
+  handleLike = (e, id) => {
+    const { handleLikeThunk } = this.props;
+
+    if(e.target.getAttribute('name') === 'upVote'){
+      handleLikeThunk(id, 'upVote');
+
+    }
+    if(e.target.getAttribute('name') === 'downVote'){
+      handleLikeThunk(id, 'downVote');
+
+    }
+  }
+
+  handleDelete = (e, id) => {
+    const { handleDeleteThunk } = this.props;
+
+    handleDeleteThunk(id);
+  }
+
+  handleEdit = (e, post) => {
+    this.setState({
+      showModal: true,
+      post
+    });
+  }
+
+  closeModal = (e) => {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
     const { post } = this.props;
+    const { showModal } = this.state;
+
+    console.log('render filho', post);
+
     return (
-      <div className="postArea">
-          <i className="iconTop">Icon1</i><i className="iconTop">Icon2</i>
-          <p style={{textAlign: 'left'}}>{post.body}</p>
-          <i className="iconBottom">Icon1</i><i className="iconBottom">Icon2</i>
-          <span className="commentsIndicator"> Comments </span>
-      </div>
+        <div className="postArea" key={post.id}>
+            <i className="far fa-trash-alt iconTop" onClick={(e,id) => this.handleDelete(e, post.id)}></i><i onClick={(e, id) => this.handleEdit(e, post)} className="fas fa-edit iconTop"></i>
+            <p style={{textAlign: 'left'}}>{post.body}</p>
+            <div className="bottomPost">
+            <i className="far fa-thumbs-up iconBottom" onClick={(e, id) => this.handleLike(e, post.id)} name="upVote"></i><i onClick={(e, id) => this.handleLike(e, post.id)} name="downVote" className="far fa-thumbs-down iconBottom"></i><span>{post.voteScore}</span>
+            <span className="commentsIndicator" > {post.commentCount} Comments </span>
+            </div>
+            <Modal post={post} showModal={showModal} closeModal={this.closeModal}></Modal>
+        </div>
     )
   }
 }
 
-export default Post
+
+const mapDispatchToProps = (dispatch) => {
+  return { 
+    handleLikeThunk: (id, likeType) => dispatch(handleLikeThunk(id, likeType)),
+    handleDeleteThunk: (id) => dispatch(handleDeleteThunk(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Post)
