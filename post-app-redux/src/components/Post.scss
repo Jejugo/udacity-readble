@@ -1,43 +1,52 @@
-.postArea{
-  width: 80%;
-  border: 1px solid black;
-  margin: 2% auto;
-  padding: 2% 0;
-  border-radius: 10px;
-  background-color: #FFF6EC;
-}
 
-.bottomPost{
-  display: flex;
-  //border: 1px #ccc solid;
-  flex-wrap: wrap;
+.postsContainer{
+  margin-top: 15%;
 
-
-  .iconBottom{
-    flex: 1 1 0%;
-    justify-content: flex-start;
-    //border: 1px #ccc solid;
-  }
-
-  .commentsIndicator{
-    flex: 10 10 10%;
-    justify-content: flex-end;
-    //border: 1px #ccc solid;
+  .postArea{
+    width: 80%;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC;
   }
   
+  .bottomPost{
+    display: flex;
+    //border: 1px #ccc solid;
+    flex-wrap: wrap;
+  
+  
+    .iconBottom{
+      flex: 1 1 0%;
+      justify-content: flex-start;
+      //border: 1px #ccc solid;
+    }
+  
+    .commentsIndicator{
+      flex: 10 10 10%;
+      justify-content: flex-end;
+      //border: 1px #ccc solid;
+    }
+    
+  }
+  
+  .iconTop{
+    float: right;
+    margin-right: 1%;
+  }
+  
+  
+  .iconTop:after{
+      content: "";
+      clear: both;
+      display: table; 
+  }
 }
 
-.iconTop{
-  float: right;
-  margin-right: 1%;
-}
 
 
-.iconTop:after{
-    content: "";
-    clear: both;
-    display: table; 
-}
 
 @media screen and (max-width: 768px){
   .postArea{

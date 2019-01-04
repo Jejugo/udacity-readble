@@ -7,10 +7,11 @@
   .mainPage .addBtn {
     flex: 1 0 30%; }
     .mainPage .addBtn button {
-      position: relative;
+      position: absolute;
       top: 23%;
-      padding: 3%;
-      width: 50%;
+      left: 80%;
+      padding: 1%;
+      width: 10%;
       font-size: 35px; }
 
 @media screen and (max-width: 768px) {
@@ -23,8 +24,12 @@
     .mainPage .addBtn {
       flex: 1 0 30%; }
       .mainPage .addBtn button {
+        position: relative;
+        top: 0;
+        left: 0;
         padding: 3%;
         width: 50%;
+        margin: 5%;
         font-size: 35px; } }
 
 /*# sourceMappingURL=Home.css.map */

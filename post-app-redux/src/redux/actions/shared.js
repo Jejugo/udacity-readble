@@ -10,7 +10,7 @@ export function handleInitialData(){
     .then(axios.spread((posts, categories) => {
       dispatch(receivePosts(posts.data));
       dispatch(receiveCategories(categories.data.categories));
-      console.log('despachou');
+      console.log('dispatched!');
     })).catch(error => {
       console.log('error: ', error);
     })

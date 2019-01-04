@@ -3,28 +3,24 @@ import Post from '../components/Post';
 import { connect } from 'react-redux';
 
 export class PostPage extends Component {
-
-  componentDidMount(){
-    
-  }
+  
 
   render() {
-    
-    console.log(this.props.post);
+    const { post } = this.props;
 
     return (
-      <div>teste
-      </div>
+      <div className="postsContainer">
+        <div className="postArea" key={post.id}>
+          <Post key={post[0].id} post={post[0]}></Post>
+        </div>
 
-      // <Post></Post>
+        <button style={{fontSize: 40}}>Answer</button>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-
-  console.log('state!', state);
-
   return {
     post: state.posts.filter(post => post.id === ownProps.match.params.id)
   }

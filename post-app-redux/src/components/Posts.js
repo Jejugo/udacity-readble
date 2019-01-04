@@ -32,7 +32,7 @@ class Posts extends Component {
   }
 
   componentDidMount(){
-    const { dispatch, postsStore } = this.props
+    const { dispatch } = this.props
   
     dispatch(getAllPosts());
 
@@ -44,7 +44,7 @@ class Posts extends Component {
     console.log('render pai');
 
     return (
-      <div>
+      <div className="postsContainer">
         {
           posts !== undefined && (
             posts.map(post => (

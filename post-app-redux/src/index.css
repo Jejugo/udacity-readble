@@ -33,10 +33,11 @@ p {
   .mainPage .addBtn {
     flex: 1 0 30%; }
     .mainPage .addBtn button {
-      position: relative;
+      position: absolute;
       top: 23%;
-      padding: 3%;
-      width: 50%;
+      left: 80%;
+      padding: 1%;
+      width: 10%;
       font-size: 35px; }
 
 @media screen and (max-width: 768px) {
@@ -49,35 +50,39 @@ p {
     .mainPage .addBtn {
       flex: 1 0 30%; }
       .mainPage .addBtn button {
+        position: relative;
+        top: 0;
+        left: 0;
         padding: 3%;
         width: 50%;
+        margin: 5%;
         font-size: 35px; } }
-.postArea {
-  width: 80%;
-  border: 1px solid black;
-  margin: 2% auto;
-  padding: 2% 0;
-  border-radius: 10px;
-  background-color: #FFF6EC; }
-
-.bottomPost {
-  display: flex;
-  flex-wrap: wrap; }
-  .bottomPost .iconBottom {
-    flex: 1 1 0%;
-    justify-content: flex-start; }
-  .bottomPost .commentsIndicator {
-    flex: 10 10 10%;
-    justify-content: flex-end; }
-
-.iconTop {
-  float: right;
-  margin-right: 1%; }
-
-.iconTop:after {
-  content: "";
-  clear: both;
-  display: table; }
+.postsContainer {
+  margin-top: 15%; }
+  .postsContainer .postArea {
+    width: 80%;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC; }
+  .postsContainer .bottomPost {
+    display: flex;
+    flex-wrap: wrap; }
+    .postsContainer .bottomPost .iconBottom {
+      flex: 1 1 0%;
+      justify-content: flex-start; }
+    .postsContainer .bottomPost .commentsIndicator {
+      flex: 10 10 10%;
+      justify-content: flex-end; }
+  .postsContainer .iconTop {
+    float: right;
+    margin-right: 1%; }
+  .postsContainer .iconTop:after {
+    content: "";
+    clear: both;
+    display: table; }
 
 @media screen and (max-width: 768px) {
   .postArea {
@@ -118,11 +123,11 @@ p {
       list-style-type: none; }
 
   .titleNav {
-    font-size: 5vw;
+    font-size: 50px;
     margin: 2% 0; }
 
   .listItem {
-    font-size: 50px;
+    font-size: 40px;
     border: 2px solid #050505;
     width: 85%;
     background-color: #FFBF7D;

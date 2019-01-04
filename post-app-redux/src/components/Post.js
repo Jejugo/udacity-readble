@@ -52,9 +52,9 @@ export class Post extends Component {
 
   render() {
     const { post } = this.props;
-    const { showModal } = this.state;
+    const { showModal } = this.state; 
 
-    console.log('render filho', post);
+    console.log('render filho', post.body);
 
     return (
       <Fragment>
