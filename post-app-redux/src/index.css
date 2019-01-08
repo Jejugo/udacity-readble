@@ -24,6 +24,11 @@ body {
 p {
   margin: 2%; }
 
+hr {
+  width: 70%;
+  border: 0.4px solid #9c9b9b;
+  margin: 2% auto; }
+
 .mainPage {
   display: flex;
   width: 78%;
@@ -58,7 +63,7 @@ p {
         margin: 5%;
         font-size: 35px; } }
 .postsContainer {
-  margin-top: 15%; }
+  margin-top: 5%; }
   .postsContainer .postArea {
     width: 80%;
     border: 1px solid black;
@@ -177,5 +182,71 @@ p {
     border: 1px solid black;
     border-radius: 10px;
     opacity: 0.95; } }
+.commentContainer {
+  margin-top: 2%; }
+  .commentContainer .commentArea {
+    width: 60%;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC; }
+  .commentContainer .bottomComment {
+    display: flex;
+    flex-wrap: wrap; }
+    .commentContainer .bottomComment .iconBottom {
+      flex: 0 1 5%;
+      justify-content: space-around; }
+  .commentContainer .iconTop {
+    float: right;
+    margin-right: 1%; }
+  .commentContainer .iconTop:after {
+    content: "";
+    clear: both;
+    display: table; }
+
+.btnComment {
+  padding: 1%;
+  width: 10%;
+  font-size: 35px;
+  margin: 1% 0 2% 0; }
+
+.commentArea {
+  display: block;
+  width: 30%;
+  margin: 1% auto 2% auto;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  outline: none; }
+
+.nameArea {
+  display: inline;
+  width: 30%;
+  margin: 1% auto 2% auto;
+  border-radius: 10px;
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  outline: none; }
+
+.inputArea {
+  display: inline;
+  width: 30%;
+  margin: 1% auto 2% auto;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  outline: none; }
+
+.btnSend {
+  padding: 0.5%;
+  width: 62%;
+  font-size: 35px;
+  margin: 1% 0 2% 0; }
+
+.labelFields {
+  margin: auto; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,6 +1,6 @@
 
 .postsContainer{
-  margin-top: 15%;
+  margin-top: 5%;
 
   .postArea{
     width: 80%;
@@ -14,20 +14,17 @@
   
   .bottomPost{
     display: flex;
-    //border: 1px #ccc solid;
     flex-wrap: wrap;
   
   
     .iconBottom{
       flex: 1 1 0%;
       justify-content: flex-start;
-      //border: 1px #ccc solid;
     }
   
     .commentsIndicator{
       flex: 10 10 10%;
       justify-content: flex-end;
-      //border: 1px #ccc solid;
     }
     
   }

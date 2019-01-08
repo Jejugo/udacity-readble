@@ -24,4 +24,9 @@ body {
 p {
   margin: 2%; }
 
+hr {
+  width: 70%;
+  border: 0.4px solid #9c9b9b;
+  margin: 2% auto; }
+
 /*# sourceMappingURL=atoms.css.map */

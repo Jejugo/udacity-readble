@@ -26,10 +26,15 @@ export default function posts(state = initialState, action){
           ...state.filter(item => item.id !== action.id)
         ]
     case UPDATE_POST:
-        let updatePost = state.map(post => (
-          post.id === action.post.id ? action.post : post
-        ));
-        return updatePost;
+      if(state.find((post) => post.id === action.post.id)){
+        return state.map(post => {
+          return post.id === action.post.id ? action.post : post
+        });
+      } 
+      else{
+       return [...state, action.post];
+       }
+
 
     default: 
       return state;

@@ -13,7 +13,7 @@ export class Post extends Component {
   }
 
   handleLike = (e, id) => {
-    const { handleLikeThunk } = this.props;
+    const { handleLikeThunk, editLike, post } = this.props;
 
     if(e.target.getAttribute('name') === 'upVote'){
       handleLikeThunk(id, 'upVote');
@@ -21,7 +21,6 @@ export class Post extends Component {
     }
     if(e.target.getAttribute('name') === 'downVote'){
       handleLikeThunk(id, 'downVote');
-
     }
   }
 

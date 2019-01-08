@@ -119,3 +119,14 @@ export function updatePostThunk(post){
     });
   }
 }
+
+export function getPostByIdThunk(id){
+  return (dispatch) => {
+  axios.get(`http://localhost:3001/posts/${id}`, {headers:  {Authorization: 'Bearer teste'}})
+    .then(response => {
+      dispatch(updatePost(response.data));
+    }).catch(e => { 
+      console.log('error ', e);
+    });
+  }
+}
