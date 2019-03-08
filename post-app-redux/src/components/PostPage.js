@@ -18,6 +18,11 @@ export class PostPage extends Component {
     }));
   }
 
+  goHome = (e) => {
+    e.preventDefault();
+    const { history } = this.props;
+    history.push(`/`);
+  }
 
   componentDidMount(){
     const { params } = this.props.match;
@@ -36,6 +41,7 @@ export class PostPage extends Component {
       {
         post[0] !== undefined && (
           <Fragment>
+            <i class="fas fa-arrow-left" onClick={this.goHome}></i>
             <h3>Comment Page</h3>
             <div className="postsContainer">
               <div className="postArea" key={post.id}>
