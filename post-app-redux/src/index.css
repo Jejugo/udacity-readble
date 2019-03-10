@@ -1,6 +1,13 @@
 li, button {
   font-family: 'Just Another Hand', cursive; }
 
+.filterButton {
+  position: relative;
+  left: 25%; }
+
+.commentFilter {
+  margin: 1%; }
+
 h3 {
   font-family: 'Just Another Hand', cursive;
   font-size: 40px;
@@ -69,7 +76,7 @@ hr {
     border: 1px solid black;
     margin: auto;
     margin-bottom: 2%;
-    padding: 2% 0;
+    padding: 2% 2%;
     border-radius: 10px;
     background-color: #FFF6EC; }
   .postsContainer .bottomPost {

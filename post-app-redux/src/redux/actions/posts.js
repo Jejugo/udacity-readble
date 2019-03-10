@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { todayDate } from '../../helpers/date';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const ADD_POSTS_BY_CATEGORY = 'ADD_POSTS_BY_CATEGORY';
@@ -76,8 +77,9 @@ export function getPostsByCategory(category){
 
 export function addPostThunk(post){
   return (dispatch) => {
-    axios.post(`http://localhost:3001/posts`, {id: post.id, title: post.title, timestamp: Date.now(), body: post.body, category: post.category, author: post.author}, {headers: headers})
+    axios.post(`http://localhost:3001/posts`, {id: post.id, title: post.title, timestamp: todayDate(), body: post.body, category: post.category, author: post.author}, {headers: headers})
     .then(response => {
+      console.log('Thats the date', todayDate());
       console.log('successo!', response);
       dispatch(addPost(response.data));
     }).catch(e => {

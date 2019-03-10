@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Post from '../components/Post';
 import Comment from './Comment';
 import AddCommentForm from './AddCommentForm';
+import ModalFilter from './ModalFilter';
 import { getPostByIdThunk } from '../redux/actions/posts';
 import { getCommentsByPostThunk } from '../redux/actions/comments';
 import { connect } from 'react-redux';
@@ -9,7 +10,8 @@ import { connect } from 'react-redux';
 export class PostPage extends Component {
 
   state = {
-    toggleWriteComment: false
+    toggleWriteComment: false,
+    radio: ''
   }
 
   handleToggleComment = (e) => {
@@ -24,6 +26,12 @@ export class PostPage extends Component {
     history.push(`/`);
   }
 
+  handleRadio = (e) => {
+    this.setState((previousState) => ({
+      [e.target.value]: !previousState.radio
+    }));
+  }
+
   componentDidMount(){
     const { params } = this.props.match;
     const { getPostByIdThunk, getCommentsByPostThunk } = this.props;
@@ -34,7 +42,7 @@ export class PostPage extends Component {
 
   render() {
     const { post, comments } = this.props;
-    const { toggleWriteComment } = this.state;
+    const { toggleWriteComment, toggleFilterModal, radio} = this.state;
 
     return (
       <div>
@@ -48,15 +56,28 @@ export class PostPage extends Component {
                 <Post key={post[0].id} post={post[0]}></Post>
               </div>
             </div>
-            <button className="btnComment" onClick={this.handleToggleComment}>Write a Comment!</button>
+            { 
+              toggleWriteComment === false ? (
+                <button className="btnComment" onClick={this.handleToggleComment}>Write a Comment!</button>
+              ) : (
+                <button className="btnComment" onClick={this.handleToggleComment}>Close</button>
+              )
+            }
+            
             {
               toggleWriteComment === true && (
                 <div>
                   <AddCommentForm/>
+                  <hr></hr>
                 </div>
+                
               )
             }
             <hr></hr>
+            <input className="commentFilter" name="radio" value="date" checked={radio === 'date'} onChange={this.handleRadio} type="radio"/>
+              <label>Date</label>
+            <input className="commentFilter" name="radio" value="score" checked={radio === 'score'}  onChange={this.handleRadio} type="radio"/>
+              <label>Score</label>
             {
               comments !== undefined && (
               comments.map(comment => (

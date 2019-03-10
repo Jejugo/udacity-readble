@@ -1,5 +1,6 @@
 import axios from 'axios';
 import shortid from 'shortid';
+import { todayDate } from '../../helpers/date';
 
 export const GET_COMMENT_POST = 'GET_COMMENT_POST';
 export const ADD_COMMENT_POST = 'ADD_COMMENT_POST';
@@ -52,9 +53,9 @@ export function getCommentsByPostThunk(id){
 
 export function addCommentByPostThunk(comment){
   return (dispatch) => {
-    axios.post('http://localhost:3001/comments', {id: shortid.generate(), timestamp: Date.now(), body: comment.body, author: comment.author, parentId: comment.parentId}, {headers: headers})
+    axios.post('http://localhost:3001/comments', {id: shortid.generate(), timestamp: todayDate(), body: comment.body, author: comment.author, parentId: comment.parentId}, {headers: headers})
     .then(response => {
-      dispatch(addCommentByPost(comment));
+      dispatch(addCommentByPost(response.data));
     }).catch(e => {
       console.log('erro', e);
     });

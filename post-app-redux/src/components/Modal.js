@@ -11,12 +11,13 @@ class Modal extends Component {
     title: '',
     author: '',
     category: '',
-    body: ''
+    body: '',
+    voteScore: 0
   }
 
   handleSubmit = (e) => {
     const { closeModal, addPostThunk, updatePostThunk, post } = this.props
-    const { title, author, category, body } = this.state;
+    const { title, author, category, body, voteScore } = this.state;
 
     e.preventDefault();
 
@@ -31,7 +32,8 @@ class Modal extends Component {
         title,
         author,
         category,
-        body
+        body,
+        voteScore,
       }
         addPostThunk(postAdd);
         closeModal();

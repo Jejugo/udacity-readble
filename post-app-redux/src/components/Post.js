@@ -53,15 +53,17 @@ export class Post extends Component {
     const { post } = this.props;
     const { showModal } = this.state; 
 
-    console.log('render filho', post.body);
+    console.log('render filho', post);
 
     return (
       <Fragment>
         <i className="far fa-trash-alt iconTop" onClick={(e,id) => this.handleDelete(e, post.id)}></i><i onClick={(e, id) => this.handleEdit(e, post)} className="fas fa-edit iconTop"></i>
+        <p style={{textAlign: 'left'}} onClick={(e, id) => this.postPage(e, post.id)}><b>Author: </b>{post.author}</p>
         <p style={{textAlign: 'left'}} onClick={(e, id) => this.postPage(e, post.id)}>{post.body}</p>
         <div className="bottomPost">
         <i className="far fa-thumbs-up iconBottom" onClick={(e, id) => this.handleLike(e, post.id)} name="upVote"></i><i onClick={(e, id) => this.handleLike(e, post.id)} name="downVote" className="far fa-thumbs-down iconBottom"></i><span>{post.voteScore}</span>
         <span className="commentsIndicator" > {post.commentCount} Comments </span>
+        <span className="dateIndicator" > {post.timestamp}</span>
         </div>
         <Modal post={post} showModal={showModal} closeModal={this.closeModal}></Modal>
       </Fragment>

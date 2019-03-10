@@ -52,9 +52,11 @@ export class Comment extends Component {
     return (
       <Fragment>
         <i className="far fa-trash-alt iconTop" onClick={(e,id) => this.handleDelete(e, comment.id)}></i><i className="fas fa-edit iconTop" onClick={(e, id) => this.handleEdit(e, comment)}></i>
+        <p style={{textAlign: 'left'}}><b>Author: </b>{comment.author}</p>
         <p style={{textAlign: 'left'}}>{comment.body}</p>
         <div className="bottomComment">
         <i className="far fa-thumbs-up iconBottom" name="upVote" onClick={(e, id) => this.handleLike(e, comment.id)}></i><i name="downVote" className="far fa-thumbs-down iconBottom" onClick={(e, id) => this.handleLike(e, comment.id)}></i><span>{comment.voteScore}</span>
+        <span className="dateIndicator" style={{position: 'relative', left: '75%'}}> {comment.timestamp}</span>
         </div>
         <Modal comment={comment} showModal={showModal} closeModal={this.closeModal}></Modal>
       </Fragment>

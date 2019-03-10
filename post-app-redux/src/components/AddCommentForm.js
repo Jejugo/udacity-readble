@@ -23,6 +23,10 @@ export class AddCommentForm extends Component {
     }
 
     addCommentByPostThunk(comment);
+    this.setState({
+      author: '',
+      body: ''
+    });
   }
 
   handleInput = (e) => {
@@ -40,14 +44,15 @@ export class AddCommentForm extends Component {
 
 
   render() {
+    const { author, body } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
         <div>
-          <input className="nameArea" id="nameArea" name="nameArea" onChange={this.handleInput} placeholder="What is your name?"></input>
+          <input className="nameArea" id="nameArea" name="nameArea" value={author} onChange={this.handleInput} placeholder="What is your name?"></input>
         </div>
         <div>
-          <textarea className="inputArea" id="inputArea" name="inputArea" onChange={this.handleInput} placeholder="Type your comment..."></textarea>
+          <textarea className="inputArea" id="inputArea" name="inputArea" value={body} onChange={this.handleInput} placeholder="Type your comment..."></textarea>
         </div>  
           <button type='submit' className="btnSend"> Send </button>
         </form>

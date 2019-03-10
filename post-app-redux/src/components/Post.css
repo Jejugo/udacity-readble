@@ -1,0 +1,37 @@
+.postsContainer {
+  margin-top: 5%; }
+  .postsContainer .postArea {
+    width: 80%;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 2% 2%;
+    border-radius: 10px;
+    background-color: #FFF6EC; }
+  .postsContainer .bottomPost {
+    display: flex;
+    flex-wrap: wrap; }
+    .postsContainer .bottomPost .iconBottom {
+      flex: 1 1 0%;
+      justify-content: flex-start; }
+    .postsContainer .bottomPost .commentsIndicator {
+      flex: 10 10 10%;
+      justify-content: flex-end; }
+  .postsContainer .iconTop {
+    float: right;
+    margin-right: 1%; }
+  .postsContainer .iconTop:after {
+    content: "";
+    clear: both;
+    display: table; }
+
+@media screen and (max-width: 768px) {
+  .postArea {
+    width: 90%;
+    border: 1px solid black;
+    margin: 2% auto;
+    padding: 2% 0;
+    border-radius: 10px;
+    background-color: #FFF6EC; } }
+
+/*# sourceMappingURL=Post.css.map */
