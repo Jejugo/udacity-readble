@@ -54,7 +54,7 @@ export class PostPage extends Component {
       {
         post[0] !== undefined && (
           <Fragment>
-            <i class="fas fa-arrow-left" onClick={this.goHome}></i>
+            <i class="fas fa-arrow-left fa-2x" style={{float: 'left', margin: '0% 1%'}}onClick={this.goHome}></i>
             <h3>Comment Page</h3>
             <div className="postsContainer">
               <div className="postArea" key={post.id}>
