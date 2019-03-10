@@ -1,3 +1,23 @@
+### Run the frontend
+
+* Clone the frontend repository  `https://github.com/Jejugo/udacity-readble`.
+* Go to the app folder  `cd udacity-readble/post-app-redux`
+* Install the dependencies `npm install`
+* run the applcation by running npm start
+* Open the app on your browser on (http://localhost:3000/)
+
+### Run the backend server
+
+* Clone the backend server from this link `https://github.com/Jejugo/udacity-readble`
+* Go to the server folder `cd udacity-readble/api-server`
+* Install the depenencies `npm install`
+* Run the server `node server.js`
+
+That's a blueprint of the entire project: 
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
