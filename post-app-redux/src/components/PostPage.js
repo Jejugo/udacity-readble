@@ -27,9 +27,9 @@ export class PostPage extends Component {
   }
 
   handleRadio = (e) => {
-    this.setState((previousState) => ({
-      [e.target.value]: !previousState.radio
-    }));
+    this.setState({
+      radio: e.target.value
+    });
   }
 
   componentDidMount(){
