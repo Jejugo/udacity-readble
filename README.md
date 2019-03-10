@@ -15,13 +15,13 @@
 
 That's a description of each component:
 
-Comment.js --> Display each comment 
-Home.js --> Main Page of the application. Holds filter buttons related to the category, creation of new posts and visualization of each Post
-Modal.js --> Component to create a modal where you can add a post
-NavBar.js --> Component that will show the categories 'react, redux, udacity'
-PostPage.js --> Entire Page of each Post. There you can find all of the posts' comments and add a new comment.
-Post.js --> Component that represents each Post
-Posts.js --> Component that displays all Posts.
+Comment.js --> Display each comment <br/>
+Home.js --> Main Page of the application. Holds filter buttons related to the category, creation of new posts and visualization of each Post<br/>
+Modal.js --> Component to create a modal where you can add a post<br/>
+NavBar.js --> Component that will show the categories 'react, redux, udacity'<br/>
+PostPage.js --> Entire Page of each Post. There you can find all of the posts' comments and add a new comment.<br/>
+Post.js --> Component that represents each Post<br/>
+Posts.js --> Component that displays all Posts.<br/>
 
 
 
