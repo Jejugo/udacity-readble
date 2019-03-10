@@ -3,7 +3,6 @@ import Post from './Post';
 import { connect } from 'react-redux';
 import { getPostsByCategory, orderPostByDate, orderPostByScore } from '../redux/actions/posts';
 import { getAllPosts } from '../redux/actions/posts';
-import ModalFilter from './ModalFilter';
 
 class Posts extends Component {
 

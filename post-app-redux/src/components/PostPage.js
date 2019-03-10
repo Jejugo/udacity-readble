@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Post from '../components/Post';
 import Comment from './Comment';
 import AddCommentForm from './AddCommentForm';
-import ModalFilter from './ModalFilter';
 import { getPostByIdThunk } from '../redux/actions/posts';
 import { getCommentsByPostThunk, orderCommentsByDate } from '../redux/actions/comments';
 import { connect } from 'react-redux';
