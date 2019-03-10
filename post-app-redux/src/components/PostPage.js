@@ -80,14 +80,23 @@ export class PostPage extends Component {
               <label>Score</label>
             {
               comments !== undefined && (
-              comments.map(comment => (
-                <div className="commentContainer">
+              radio === 'score' ? (
+                comments.sort(function(a,b) {return (a.voteScore < b.voteScore) ? 1 : ((b.voteScore < a.voteScore) ? -1 : 0);} ).map(comment => (
+                  <div className="commentContainer">
                   <div className="commentArea" key={post.id}>
                     <Comment comment={comment}></Comment>
                   </div>
                 </div>
+                ))
+              ) : (
+                comments.map(comment => (
+                  <div className="commentContainer">
+                    <div className="commentArea" key={post.id}>
+                      <Comment comment={comment}></Comment>
+                    </div>
+                  </div>
+                ))
               ))
-              )
             }
           </Fragment>
         )
