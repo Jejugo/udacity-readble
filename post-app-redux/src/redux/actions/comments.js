@@ -6,6 +6,7 @@ export const GET_COMMENT_POST = 'GET_COMMENT_POST';
 export const ADD_COMMENT_POST = 'ADD_COMMENT_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const HANDLE_LIKE = 'HANDLE_LIKE';
+export const ORDER_COMMENT_BY_DATE = 'ORDER_COMMENT_BY_DATE'
 
 const headers = {
   Authorization: 'Bearer teste'
@@ -40,6 +41,11 @@ function handleLike(id, post){
   }
 }
 
+export function orderCommentsByDate () {
+  return {
+    type: ORDER_COMMENT_BY_DATE
+  }
+}
 
 export function getCommentsByPostThunk(id){
   return (dispatch) => {
@@ -53,7 +59,7 @@ export function getCommentsByPostThunk(id){
 
 export function addCommentByPostThunk(comment){
   return (dispatch) => {
-    axios.post('http://localhost:3001/comments', {id: shortid.generate(), timestamp: todayDate(), body: comment.body, author: comment.author, parentId: comment.parentId}, {headers: headers})
+    axios.post('http://localhost:3001/comments', {id: shortid.generate(), timestamp: Date.now(), body: comment.body, author: comment.author, parentId: comment.parentId}, {headers: headers})
     .then(response => {
       dispatch(addCommentByPost(response.data));
     }).catch(e => {

@@ -41,13 +41,17 @@ export class Comment extends Component {
       showModal: false,
     });
   }
-  
+
+  toHumanDate = (s) => new Date(s).toLocaleDateString("pt-BR")
+
   render() {
 
     const { comment } = this.props;
     const { showModal } = this.state;
 
     console.log('commmments!', comment);
+
+    const HumanDate = this.toHumanDate(comment.timestamp)
 
     return (
       <Fragment>
@@ -56,7 +60,7 @@ export class Comment extends Component {
         <p style={{textAlign: 'left'}}>{comment.body}</p>
         <div className="bottomComment">
         <i className="far fa-thumbs-up iconBottom" name="upVote" onClick={(e, id) => this.handleLike(e, comment.id)}></i><i name="downVote" className="far fa-thumbs-down iconBottom" onClick={(e, id) => this.handleLike(e, comment.id)}></i><span>{comment.voteScore}</span>
-        <span className="dateIndicator" style={{position: 'relative', left: '75%'}}> {comment.timestamp}</span>
+        <span className="dateIndicator" style={{position: 'relative', left: '75%'}}> {HumanDate}</span>
         </div>
         <Modal comment={comment} showModal={showModal} closeModal={this.closeModal}></Modal>
       </Fragment>

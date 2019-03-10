@@ -7,6 +7,8 @@ export const ADD_POST = 'ADD_POST';
 export const HANDLE_LIKE = 'HANDLE_LIKE';
 export const DELETE_POST = 'DELETE_POST';
 export const UPDATE_POST = 'UPDATE_POST'
+export const ORDER_POST_BY_DATE = 'ORDER_POST_BY_DATE'
+export const ORDER_POST_BY_SCORE = 'ORDER_POST_BY_SCORE'
 
 const headers = {
   Authorization: 'Bearer teste'
@@ -50,6 +52,17 @@ function updatePost(post){
   }
 }
 
+export function orderPostByDate () {
+  return {
+    type: ORDER_POST_BY_DATE
+  }
+}
+
+export function orderPostByScore () {
+  return {
+    type: ORDER_POST_BY_SCORE
+  }
+}
 
 //THUNK FUNCTIONS
 
@@ -77,7 +90,7 @@ export function getPostsByCategory(category){
 
 export function addPostThunk(post){
   return (dispatch) => {
-    axios.post(`http://localhost:3001/posts`, {id: post.id, title: post.title, timestamp: todayDate(), body: post.body, category: post.category, author: post.author}, {headers: headers})
+    axios.post(`http://localhost:3001/posts`, {id: post.id, title: post.title, timestamp: Date.now(), body: post.body, category: post.category, author: post.author}, {headers: headers})
     .then(response => {
       console.log('Thats the date', todayDate());
       console.log('successo!', response);

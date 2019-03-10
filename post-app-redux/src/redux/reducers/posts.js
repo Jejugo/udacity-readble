@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, DELETE_POST, ADD_POST, HANDLE_LIKE, UPDATE_POST } from  '../actions/posts';
+import { RECEIVE_POSTS, DELETE_POST, ADD_POST, HANDLE_LIKE, UPDATE_POST, ORDER_POST_BY_DATE, ORDER_POST_BY_SCORE } from  '../actions/posts';
 
 const initialState = [
 
@@ -35,6 +35,11 @@ export default function posts(state = initialState, action){
        return [...state, action.post];
        }
 
+    case ORDER_POST_BY_DATE:
+      return state.slice().sort((a,b) => b.timestamp - a.timestamp)
+
+    case ORDER_POST_BY_SCORE:
+      return state.slice().sort((a,b) => b.voteScore - a.voteScore)
 
     default: 
       return state;

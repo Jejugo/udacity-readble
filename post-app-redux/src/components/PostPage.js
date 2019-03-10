@@ -4,7 +4,7 @@ import Comment from './Comment';
 import AddCommentForm from './AddCommentForm';
 import ModalFilter from './ModalFilter';
 import { getPostByIdThunk } from '../redux/actions/posts';
-import { getCommentsByPostThunk } from '../redux/actions/comments';
+import { getCommentsByPostThunk, orderCommentsByDate } from '../redux/actions/comments';
 import { connect } from 'react-redux';
 
 export class PostPage extends Component {
@@ -30,6 +30,11 @@ export class PostPage extends Component {
     this.setState({
       radio: e.target.value
     });
+
+    if (e.target.value === 'date') {
+      this.props.orderCommentsByDate()
+    }
+
   }
 
   componentDidMount(){
@@ -56,21 +61,21 @@ export class PostPage extends Component {
                 <Post key={post[0].id} post={post[0]}></Post>
               </div>
             </div>
-            { 
+            {
               toggleWriteComment === false ? (
                 <button className="btnComment" onClick={this.handleToggleComment}>Write a Comment!</button>
               ) : (
                 <button className="btnComment" onClick={this.handleToggleComment}>Close</button>
               )
             }
-            
+
             {
               toggleWriteComment === true && (
                 <div>
                   <AddCommentForm/>
                   <hr></hr>
                 </div>
-                
+
               )
             }
             <hr></hr>
@@ -109,7 +114,8 @@ export class PostPage extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPostByIdThunk: (id) => dispatch(getPostByIdThunk(id)),
-    getCommentsByPostThunk: (id) => dispatch(getCommentsByPostThunk(id))
+    getCommentsByPostThunk: (id) => dispatch(getCommentsByPostThunk(id)),
+    orderCommentsByDate: () => dispatch(orderCommentsByDate())
   }
 }
 

@@ -49,11 +49,15 @@ export class Post extends Component {
     history.push(`/post/${id.toString()}`);
   }
 
+  toHumanDate = (s) => new Date(s).toLocaleDateString("pt-BR")
+
   render() {
     const { post } = this.props;
     const { showModal } = this.state; 
 
     console.log('render filho', post);
+
+    const HumanDate = this.toHumanDate(post.timestamp)
 
     return (
       <Fragment>
@@ -63,14 +67,13 @@ export class Post extends Component {
         <div className="bottomPost">
         <i className="far fa-thumbs-up iconBottom" onClick={(e, id) => this.handleLike(e, post.id)} name="upVote"></i><i onClick={(e, id) => this.handleLike(e, post.id)} name="downVote" className="far fa-thumbs-down iconBottom"></i><span>{post.voteScore}</span>
         <span className="commentsIndicator" > {post.commentCount} Comments </span>
-        <span className="dateIndicator" > {post.timestamp}</span>
+        <span className="dateIndicator" > {HumanDate}</span>
         </div>
         <Modal post={post} showModal={showModal} closeModal={this.closeModal}></Modal>
       </Fragment>
     )
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return { 

@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import Post from './Post';
 import { connect } from 'react-redux';
-import { getPostsByCategory } from '../redux/actions/posts';
+import { getPostsByCategory, orderPostByDate, orderPostByScore } from '../redux/actions/posts';
 import { getAllPosts } from '../redux/actions/posts';
+import ModalFilter from './ModalFilter';
 
 class Posts extends Component {
 
   state = {
-    posts: []
+    posts: [],
+    radio: ''
   }
-
 
   componentDidUpdate(prevProps, prevState){
     const { btnClicked, dispatch, postsStore } = this.props;
@@ -38,13 +39,33 @@ class Posts extends Component {
 
   }
 
+  handleRadio = (e) => {
+    this.setState({
+      radio: e.target.value
+    });
+
+    const { dispatch } = this.props
+
+    if (e.target.value === 'date') {
+      this.props.dispatch(orderPostByDate())
+    } else if (e.target.value === 'score') {
+      this.props.dispatch(orderPostByScore())
+    }
+
+  }
+
   render() {
-    const { posts } = this.state;
+    const { posts, radio } = this.state;
 
     console.log('render pai');
 
     return (
       <div className="postsContainer">
+
+        <input className="commentFilter" name="radio" value="date" checked={radio === 'date'} onChange={this.handleRadio} type="radio"/>
+          <label>Date</label>
+        <input className="commentFilter" name="radio" value="score" checked={radio === 'score'}  onChange={this.handleRadio} type="radio"/>
+          <label>Score</label>
         {
           posts !== undefined && (
             posts.map(post => (
@@ -58,7 +79,6 @@ class Posts extends Component {
     )
   }
 }
-
 
 const mapStateToProps = (state, ownProps) => {
   return {

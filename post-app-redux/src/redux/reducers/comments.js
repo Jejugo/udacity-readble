@@ -1,4 +1,4 @@
-import { GET_COMMENT_POST, ADD_COMMENT_POST, DELETE_COMMENT, HANDLE_LIKE } from  '../actions/comments';
+import { GET_COMMENT_POST, ADD_COMMENT_POST, DELETE_COMMENT, HANDLE_LIKE, ORDER_COMMENT_BY_DATE } from  '../actions/comments';
 
 const initialState = [
 
@@ -22,7 +22,11 @@ export default function comments(state = initialState, action){
       return [
         ...state.filter(item => item.id !== action.id)
       ]
-    default: 
+
+    case ORDER_COMMENT_BY_DATE :
+      return state.slice().sort((a,b) => b.timestamp - a.timestamp)
+
+    default:
       return state;
   }
 }
