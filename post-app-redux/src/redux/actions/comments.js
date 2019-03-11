@@ -6,7 +6,8 @@ export const GET_COMMENT_POST = 'GET_COMMENT_POST';
 export const ADD_COMMENT_POST = 'ADD_COMMENT_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const HANDLE_LIKE = 'HANDLE_LIKE';
-export const ORDER_COMMENT_BY_DATE = 'ORDER_COMMENT_BY_DATE'
+export const ORDER_COMMENT_BY_DATE = 'ORDER_COMMENT_BY_DATE';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
 const headers = {
   Authorization: 'Bearer teste'
@@ -16,6 +17,13 @@ function getCommentByPost(comments){
   return {
     type: GET_COMMENT_POST,
     comments
+  }
+}
+
+function updateComment(post){
+  return{
+    type: UPDATE_COMMENT,
+    post
   }
 }
 
@@ -64,6 +72,18 @@ export function addCommentByPostThunk(comment){
       dispatch(addCommentByPost(response.data));
     }).catch(e => {
       console.log('erro', e);
+    });
+  }
+}
+
+export function updateCommentThunk(comment){
+  return (dispatch) => {
+    console.log('entrou no action comment');
+    axios.put(`http://localhost:3001/comments/${comment.id}`, {id: comment.id, title: comment.title, timestamp: Date.now(), body: comment.body, category: comment.category, author: comment.author, parentId: comment.parentId}, {headers: headers})
+    .then(response => {
+      dispatch(updateComment(response.data));
+    }).catch(e => {
+      console.log('erro ', e);
     });
   }
 }

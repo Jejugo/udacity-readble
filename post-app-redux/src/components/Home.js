@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Posts from './Posts';
 import Navbar from './Navbar';
 import Modal from './Modal';
@@ -6,13 +6,14 @@ import Modal from './Modal';
 class Home extends Component {
 
   state = {
-    btnClicked: '',
-    showModal: false
+    showModal: false,
+    adding: false
   }
 
-  openModal = (e) => {
+  openModal = () => {
     this.setState({
-      showModal: true
+      showModal: true,
+      adding: true
     });
   }
 
@@ -22,27 +23,28 @@ class Home extends Component {
     });
   }
 
-  setBtnClicked = (e) => {
-    e.preventDefault();
-    this.setState({
-      btnClicked: e.target.name
-    });
+  componentDidUpdate(){
+    console.log('updated!', this.props.match.params.category);
   }
 
   render() {
-    const { btnClicked, showModal } = this.state;
+    const { showModal, adding } = this.state;
 
     return (
       <div className="homePage">
-         <Navbar setBtnClicked={this.setBtnClicked}></Navbar>
+         <Navbar></Navbar>
           <div className="mainPage">
-            <div className="pageSecton">
-                <Posts btnClicked={btnClicked}></Posts>
-            </div>
-            <div className="addBtn"> 
-              <button onClick={this.openModal}> Add new Post!</button>
-            </div>
-            <Modal closeModal={this.closeModal} showModal={showModal}></Modal>
+           { 
+            <Fragment>
+              <div className="pageSecton">
+                <Posts btnClicked={this.props.match.params.category}></Posts>
+              </div>
+              <div className="addBtn"> 
+                <button onClick={this.openModal}> Add new Post! </button>
+              </div>
+              <Modal closeModal={this.closeModal} showModal={showModal} adding={adding}></Modal>
+            </Fragment>
+            }
           </div>
       </div>
     )

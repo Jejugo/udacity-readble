@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Post from './Post';
 import { connect } from 'react-redux';
+import { withRoute } from 'react-router-dom';
 import { getPostsByCategory, orderPostByDate, orderPostByScore } from '../redux/actions/posts';
 import { getAllPosts } from '../redux/actions/posts';
 
@@ -12,9 +13,9 @@ class Posts extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    const { btnClicked, dispatch, postsStore } = this.props;
+    const { dispatch, postsStore, btnClicked } = this.props;
 
-    console.log('atualizou! ', this.state);
+    console.log('atualizou! ', this.props);
 
     if(prevProps.postsStore !== postsStore){
       this.setState({
@@ -54,10 +55,8 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, radio } = this.state;
-
-    console.log('render pai');
-
+    const { posts, radio } = this.state;  
+    const { btnClicked } = this.props;
     return (
       <div className="postsContainer">
 
@@ -69,7 +68,7 @@ class Posts extends Component {
           posts !== undefined && (
             posts.map(post => (
               <div className="postArea" key={post.id}>
-                <Post key={post.id} post={post}></Post>
+                <Post key={post.id} post={post} btnClicked={btnClicked}></Post>
               </div>
             ))
           )

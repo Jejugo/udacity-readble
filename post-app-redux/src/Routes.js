@@ -12,8 +12,11 @@ class Routes extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path='/post/:id' render={(history) => (
+            <Route path='/:category/:id' render={(history) => (
                 <PostPage {...history}/>
+              )}/>
+            <Route path='/:category' render={(history) => (
+                <Home {...history}/>
               )}/>
           </Switch>
         </BrowserRouter>

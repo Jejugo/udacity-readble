@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { addPostThunk } from '../redux/actions/posts';
 import { updatePostThunk } from '../redux/actions/posts';
+import { updateCommentThunk } from '../redux/actions/comments';
 import shortid from 'shortid';
 
 class Modal extends Component {
@@ -10,23 +11,29 @@ class Modal extends Component {
     id: '',
     title: '',
     author: '',
-    category: '',
+    category: 'react',
     body: '',
     voteScore: 0
   }
 
   handleSubmit = (e) => {
-    const { closeModal, addPostThunk, updatePostThunk, post } = this.props
+    const { closeModal, addPostThunk, updatePostThunk, post, comment, updateCommentThunk, adding } = this.props
     const { title, author, category, body, voteScore } = this.state;
 
     e.preventDefault();
-
+    if (comment !== undefined){
+      let objToUpdate = this.state;
+      objToUpdate.id = comment.id;
+      objToUpdate.parentId = comment.parentId;
+      updateCommentThunk(objToUpdate);
+      closeModal();
+    }
     if (post !== undefined){
       updatePostThunk(this.state);
       closeModal();
     }
     
-    else{
+    if (adding === true){
       const postAdd = {
         id: shortid.generate(),
         title,
@@ -46,6 +53,12 @@ class Modal extends Component {
     });
   }
 
+  selectCategory = (e) => {
+    this.setState({
+      category: e.target.value
+    });
+  }
+
   componentDidMount(){
     const { post } = this.props;
     if (post !== undefined){
@@ -60,24 +73,44 @@ class Modal extends Component {
   };
 
   render() {
-    const { showModal, closeModal } = this.props;
+    const { showModal, closeModal, comment } = this.props;
     const { title, author, category, body } = this.state
     return (
      <Fragment>
      { showModal === true && (
-      <div className="modal">
-      <span onClick={() => closeModal()} style={{margin: '5%', float: 'right', cursor: 'pointer', fontWeight: 'bold'}}>X</span>
-      <h3 style={{clear: 'both', content:'""', display: 'block'}}>Adicione um Post!</h3>
-        <form onSubmit={this.handleSubmit}>
-          <div className="formModal">
-              <input type="text" value={title} onChange={this.handleInput} name="title" placeholder="Type the Title"></input>
-              <input type="text" value={author} onChange={this.handleInput} name="author" placeholder="Type the Author"></input>
-              <input type="text" value={category} onChange={this.handleInput} name="category" placeholder="Type the Category"></input>
-              <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Content"></input> 
-          </div>
-          <button> Submit </button>
-        </form>
-     </div>
+       comment !== undefined ? (
+        <div className="modal">
+        <span onClick={() => closeModal()} style={{margin: '5%', float: 'right', cursor: 'pointer', fontWeight: 'bold'}}>X</span>
+          <h3 style={{clear: 'both', content:'""', display: 'block'}}>Add a Comment!</h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="formModal">
+                <input type="text" value={title} onChange={this.handleInput} name="title" placeholder="Type the Title"></input>
+                <input type="text" value={author} onChange={this.handleInput} name="author" placeholder="Type the Author"></input>
+                <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Content"></input> 
+            </div>
+            <button> Submit </button>
+          </form>
+       </div>
+       ) : (
+        <div className="modal">
+        <span onClick={() => closeModal()} style={{margin: '5%', float: 'right', cursor: 'pointer', fontWeight: 'bold'}}>X</span>
+          <h3 style={{clear: 'both', content:'""', display: 'block'}}>Add a Post!</h3>
+          <form onSubmit={this.handleSubmit}>
+            <div className="formModal">
+                <input type="text" value={title} onChange={this.handleInput} name="title" placeholder="Type the Title"></input>
+                <input type="text" value={author} onChange={this.handleInput} name="author" placeholder="Type the Author"></input>
+                <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Content"></input> 
+                <select onChange={this.selectCategory}>
+                  <option value="react">React</option>
+                  <option value="redux">Redux</option>
+                  <option value="udacity">Udacity</option>
+                </select>
+                {/*<input type="text" value={category} onChange={this.handleInput} name="category" placeholder="Type the Category"></input>*/}
+            </div>
+            <button> Submit </button>
+          </form>
+       </div>
+       )
      )}
      </Fragment>
     )
@@ -87,7 +120,8 @@ class Modal extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addPostThunk: (post) => dispatch(addPostThunk(post)),
-    updatePostThunk: (post) => dispatch(updatePostThunk(post))
+    updatePostThunk: (post) => dispatch(updatePostThunk(post)),
+    updateCommentThunk: (comment) => dispatch(updateCommentThunk(comment))
   }
 }
 
