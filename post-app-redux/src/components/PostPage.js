@@ -38,10 +38,19 @@ export class PostPage extends Component {
 
   componentDidMount(){
     const { params } = this.props.match;
-    const { getPostByIdThunk, getCommentsByPostThunk } = this.props;
+    const { getPostByIdThunk, getCommentsByPostThunk, history, posts } = this.props;
 
-    getPostByIdThunk(params.id);
-    getCommentsByPostThunk(params.id);
+    let result = posts.find(post => post.id === params.id);    
+
+    if(result !== undefined){
+      getPostByIdThunk(params.id);
+      getCommentsByPostThunk(params.id);
+    }
+
+    else{
+      history.push('/error');
+    }
+
   }
 
   render() {
@@ -121,6 +130,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state, ownPost) => {
   console.log(state.comments);
   return {
+    posts: state.posts,
     post: state.posts.filter(post => ownPost.match.params.id === post.id),
     comments: state.comments
   }

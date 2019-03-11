@@ -46,7 +46,12 @@ export class Post extends Component {
   postPage = (e, id, btnClicked) => {
     e.preventDefault();
     const { history } = this.props;
-    history.push(`/${btnClicked}/${id.toString()}`);
+    if(btnClicked === undefined){
+      history.push('/error');  
+    }
+    else{
+      history.push(`/${btnClicked}/${id.toString()}`);
+    }
   }
 
   toHumanDate = (s) => new Date(s).toLocaleDateString("pt-BR")
