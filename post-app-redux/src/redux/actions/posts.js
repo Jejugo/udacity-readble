@@ -72,7 +72,7 @@ export function getAllPosts(){
     .then(response => {
       dispatch(receivePosts(response.data));
     }).catch(e => {
-      console.log('errrrrro ' , e);
+      console.log('error:  ' , e);
     });
   }
 }
@@ -108,7 +108,7 @@ export function handleLikeThunk(id, likeType){
       console.log('success! ', response);
       dispatch(handleLike(id, response.data))
     }).catch(e => {
-      console.log('erro!! ', e);
+      console.log('error: ', e);
     });
   }
 }

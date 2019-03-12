@@ -30,14 +30,16 @@ function updateComment(post){
 function addCommentByPost(comment){
   return {
     type: ADD_COMMENT_POST,
-    comment
+    comment,
+    parentId: comment.parentId
   }
 }
 
-function deleteComment(id){
+function deleteComment(comment){
   return{
     type: DELETE_COMMENT,
-    id
+    id: comment.id,
+    parentId: comment.parentId
   }
 }
 
@@ -78,7 +80,6 @@ export function addCommentByPostThunk(comment){
 
 export function updateCommentThunk(comment){
   return (dispatch) => {
-    console.log('entrou no action comment');
     axios.put(`http://localhost:3001/comments/${comment.id}`, {id: comment.id, title: comment.title, timestamp: Date.now(), body: comment.body, category: comment.category, author: comment.author, parentId: comment.parentId}, {headers: headers})
     .then(response => {
       dispatch(updateComment(response.data));
@@ -88,11 +89,11 @@ export function updateCommentThunk(comment){
   }
 }
 
-export function handleDeleteCommentsThunk(id){
+export function handleDeleteCommentsThunk(comment){
   return (dispatch) => {
-    axios.delete(`http://localhost:3001/comments/${id}`, {headers: headers})
+    axios.delete(`http://localhost:3001/comments/${comment.id}`, {headers: headers})
     .then(response => {
-      dispatch(deleteComment(id));
+      dispatch(deleteComment(comment));
     }).catch(e => {
       console.log('erro ', e);
     })

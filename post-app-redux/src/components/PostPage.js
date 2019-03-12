@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Post from '../components/Post';
 import Comment from './Comment';
 import AddCommentForm from './AddCommentForm';
+import axios from 'axios';
 import { getPostByIdThunk } from '../redux/actions/posts';
 import { getCommentsByPostThunk, orderCommentsByDate } from '../redux/actions/comments';
 import { connect } from 'react-redux';
@@ -39,9 +40,9 @@ export class PostPage extends Component {
   componentDidMount(){
     const { params } = this.props.match;
     const { getPostByIdThunk, getCommentsByPostThunk, history, posts } = this.props;
-
-    let result = posts.find(post => post.id === params.id);    
-
+    axios.get('http://localhost:3001/posts', {headers:  { Authorization: 'Bearer teste'}}).then(res => {
+          
+    let result = res.data.find(post => post.id === params.id);    
     if(result !== undefined){
       getPostByIdThunk(params.id);
       getCommentsByPostThunk(params.id);
@@ -50,6 +51,8 @@ export class PostPage extends Component {
     else{
       history.push('/error');
     }
+    });
+
 
   }
 

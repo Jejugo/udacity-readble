@@ -22,11 +22,6 @@ class Home extends Component {
       showModal: false
     });
   }
-
-  componentDidUpdate(){
-    console.log('updated!', this.props.match.params.category);
-  }
-
   render() {
     const { showModal, adding } = this.state;
 

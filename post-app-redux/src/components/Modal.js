@@ -60,7 +60,7 @@ class Modal extends Component {
   }
 
   componentDidMount(){
-    const { post } = this.props;
+    const { post, comment } = this.props;
     if (post !== undefined){
       this.setState({
         id: post.id,
@@ -70,10 +70,18 @@ class Modal extends Component {
         body: post.body
       });
     }
+    if(comment !== undefined){
+      this.setState({
+        id: comment.id,
+        title: comment.title,
+        author: comment.author,
+        body: comment.body
+      });
+    }
   };
 
   render() {
-    const { showModal, closeModal, comment } = this.props;
+    const { showModal, closeModal, comment, post } = this.props;
     const { title, author, category, body } = this.state
     return (
      <Fragment>
@@ -84,9 +92,8 @@ class Modal extends Component {
           <h3 style={{clear: 'both', content:'""', display: 'block'}}>Add a Comment!</h3>
           <form onSubmit={this.handleSubmit}>
             <div className="formModal">
-                <input type="text" value={title} onChange={this.handleInput} name="title" placeholder="Type the Title"></input>
+                <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Title"></input>
                 <input type="text" value={author} onChange={this.handleInput} name="author" placeholder="Type the Author"></input>
-                <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Content"></input> 
             </div>
             <button> Submit </button>
           </form>
@@ -100,7 +107,7 @@ class Modal extends Component {
                 <input type="text" value={title} onChange={this.handleInput} name="title" placeholder="Type the Title"></input>
                 <input type="text" value={author} onChange={this.handleInput} name="author" placeholder="Type the Author"></input>
                 <input type="text" value={body} onChange={this.handleInput} name="body" placeholder="Type the Content"></input> 
-                <select onChange={this.selectCategory}>
+                <select onChange={this.selectCategory} value={category}>
                   <option value="react">React</option>
                   <option value="redux">Redux</option>
                   <option value="udacity">Udacity</option>

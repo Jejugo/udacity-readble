@@ -15,8 +15,6 @@ class Posts extends Component {
   componentDidUpdate(prevProps, prevState){
     const { dispatch, postsStore, btnClicked } = this.props;
 
-    console.log('atualizou! ', this.props);
-
     if(prevProps.postsStore !== postsStore){
       this.setState({
         posts: postsStore
